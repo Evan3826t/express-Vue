@@ -42,6 +42,20 @@ app.use(function (err, req, res, next) {
 var debug = require('debug')('my-application');
 app.set('port', process.env.PORT || 3000);
 
+// 解決跨域問題
+const cors = require('cors');  
+app.use(cors({  
+    origin:['http://localhost:8080'],
+    methods:['GET','POST'],
+}));
+app.all('*',function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  next(); 
+});
+
+
 // 啟動監聽
 var server = app.listen(app.get('port'), function () {
   debug('Express server listening on port ' + server.address().port);
