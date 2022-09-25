@@ -1,22 +1,29 @@
 {
   "name": "express-vue",
   "version": "1.0.0",
+  "private": true,
   "description": "A Vue.js project",
   "author": "谷啟祥 <evan.gu@piapp.com.tw>",
-  "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
+    "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
-    "build": "node build/build.js"
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "e2e": "node test/e2e/runner.js",
+    "start": "npm run dev",
+    "test": "npm run unit && npm run e2e",
+    "unit": "jest --config test/unit/jest.conf.js --coverage"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.11.5",
     "axios": "^0.27.2",
+    "bootstrap": "^4.6.2",
+    "bootstrap-vue": "^2.22.0",
     "express-generator": "^4.16.1",
-    "vue": "^2.5.2",
+    "jquery": "^3.6.1",
+    "mutationobserver-shim": "^0.3.7",
+    "popper.js": "^1.16.1",
+    "portal-vue": "^2.1.7",
+    "vue": "^2.7.10",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -63,11 +70,14 @@
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
     "rimraf": "^2.6.0",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.2",
     "selenium-server": "^3.0.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
+    "vue-cli-plugin-bootstrap-vue": "~0.8.2",
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
@@ -77,13 +87,13 @@
     "webpack-dev-server": "^2.9.1",
     "webpack-merge": "^4.1.0"
   },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  }
 }
