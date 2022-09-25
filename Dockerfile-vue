@@ -16,7 +16,7 @@ RUN npm install
 COPY . .
 
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
 # docker build . -t <your username>/node-web
 # docker run -p 5001:8080 -d <your username>/node-web
 # docker exec -it <container id> /bin/bash

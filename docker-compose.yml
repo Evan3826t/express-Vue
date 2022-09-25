@@ -1,0 +1,23 @@
+version: '3'
+services:
+  nodejs-server:
+    build:
+      # dockerfile path
+      context: ./server
+      dockerfile: Dockerfile-server
+    ports:
+      - "3080:3080"
+    container_name: express
+    volumes:
+       - ./server:/usr/src/app/server
+       - /usr/src/app/server/node_modules
+  vue-ui:
+    build:
+      # dockerfile path
+      context: ./
+      dockerfile: Dockerfile-vue
+    ports:
+      - "8080:8080"
+    container_name: vue-ui
+    volumes:
+       - ./:/usr/src/app/
