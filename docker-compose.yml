@@ -6,18 +6,21 @@ services:
       context: ./server
       dockerfile: Dockerfile-server
     ports:
-      - "3080:3080"
+      - "3000:3000"
     container_name: express
     volumes:
-       - ./server:/usr/src/app/server
-       - /usr/src/app/server/node_modules
+       - ./server:/usr/src/app
+       - /usr/src/app/node_modules
   vue-ui:
     build:
       # dockerfile path
       context: ./
       dockerfile: Dockerfile-vue
+    working_dir: /app
     ports:
-      - "8080:8080"
+      - "9002:9002"
     container_name: vue-ui
     volumes:
-       - ./:/usr/src/app/
+       - ./:/app/
+
+# docker run -v /Users/evan.gu/express-Vue:/usr/tmp -p 8080:80 -d node:12 /bin/sh -c "cd /usr/tmp; ls; cat package.json; npm install; npm start"
