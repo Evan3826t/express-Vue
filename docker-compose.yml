@@ -1,5 +1,16 @@
 version: '3'
 services:
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+    volumes:
+      - mysql-data:/var/lib/mysql
   nodejs-server:
     build:
       # dockerfile path
@@ -10,6 +21,8 @@ services:
     ports:
       - "3000:3000"
     container_name: express
+    depends_on: 
+      - "mysqldb"
     volumes:
        - ./server:/usr/src/app
        - /usr/src/app/node_modules
@@ -26,5 +39,6 @@ services:
     container_name: vue-ui
     volumes:
        - ./frontEnd:/app/
-
+volumes:
+  mysql-data:
 # docker run -v /Users/evan.gu/express-Vue:/usr/tmp -p 8080:80 -d node:12 /bin/sh -c "cd /usr/tmp; ls; cat package.json; npm install; npm start"

@@ -7,6 +7,29 @@ var logger = require('morgan')
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 
+// DB
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+  // local
+  // host: '127.0.0.1',
+  // docker 
+  host: 'mysqldb',
+  user: 'root',
+  password: 'root',
+  database: 'express',
+  port:'3306',
+  connectionLimit: 10
+})
+
+connection.connect(function(err) {
+  if (err) {
+      console.log('connecting error');
+      return;
+  }
+  console.log('connecting success');
+});
+
+
 var app = express()
 
 // view engine setup
@@ -17,6 +40,13 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')));
+
+// db state
+app.use(function(req, res, next) {
+  req.con = connection;
+  next();
+});
 
 app.use('/api', indexRouter)
 app.use('/api/users', usersRouter)
