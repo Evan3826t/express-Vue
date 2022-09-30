@@ -16,7 +16,7 @@ services:
   vue-ui:
     build:
       # dockerfile path
-      context: ./
+      context: ./frontEnd
       dockerfile: Dockerfile-vue
     working_dir: /app
     expose:
@@ -25,6 +25,6 @@ services:
       - 8080:8080
     container_name: vue-ui
     volumes:
-       - ./:/app/
+       - ./frontEnd:/app/
 
 # docker run -v /Users/evan.gu/express-Vue:/usr/tmp -p 8080:80 -d node:12 /bin/sh -c "cd /usr/tmp; ls; cat package.json; npm install; npm start"
