@@ -12,14 +12,18 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: '0.0.0.0:3000',
-        ChangeOrigin: true
+        // docker (according to docker compose service name)
+        target: 'http://nodejs-server:3000',
+        // local
+        // target: 'http://localhost:3000',
+        secure: false,
+        ChangeOrigin: true,
       }
     },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 9002, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

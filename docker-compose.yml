@@ -5,6 +5,8 @@ services:
       # dockerfile path
       context: ./server
       dockerfile: Dockerfile-server
+    expose:
+      - 3000
     ports:
       - "3000:3000"
     container_name: express
@@ -17,8 +19,10 @@ services:
       context: ./
       dockerfile: Dockerfile-vue
     working_dir: /app
+    expose:
+      - 8080
     ports:
-      - "9002:9002"
+      - 8080:8080
     container_name: vue-ui
     volumes:
        - ./:/app/

@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:12-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -18,10 +18,8 @@ COPY . .
 ENV NODE_ENV=production
 ENV MONGO_URI=mongodb://db:27017/test
 ENV HOST=0.0.0.0
-# ENV PORT=3000
+ENV PORT=3000
 
-# 曝露出 3000 port
-EXPOSE 3000
 CMD [ "node", "app.js" ]
 # docker build . -t <your username>/node-web
 # docker run -p 5001:8080 -d <your username>/node-web
