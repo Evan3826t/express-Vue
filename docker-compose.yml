@@ -2,6 +2,7 @@ version: '3'
 services:
   mysqldb:
     image: mysql:5.7
+    platform: linux/amd64
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -21,6 +22,8 @@ services:
     ports:
       - "3000:3000"
     container_name: express
+    # 開發環境使用 nodemon
+    command: "nodemon app.js"
     depends_on: 
       - "mysqldb"
     volumes:
