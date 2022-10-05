@@ -3,6 +3,7 @@ var express = require('express')
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
+const cookieSession = require("cookie-session");
 
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
@@ -46,6 +47,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
   req.con = connection;
   next();
+});
+
+app.use(
+  cookieSession({
+    name: "bezkoder-session",
+    secret: "COOKIE_SECRET", // should use as secret environment variable
+    httpOnly: true
+  })
+);
+
+app.get("/123", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
 });
 
 app.use('/api', indexRouter)
