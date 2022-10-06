@@ -9,26 +9,35 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 
 // DB
-var mysql = require('mysql')
-var connection = mysql.createConnection({
-  // local
-  // host: '127.0.0.1',
-  // docker 
-  host: 'mysqldb',
-  user: 'root',
-  password: 'root',
-  database: 'express',
-  port:'3306',
-  connectionLimit: 10
-})
+const db = require("./app/models");
+const Role = db.role;
 
-connection.connect(function(err) {
-  if (err) {
-      console.log('connecting error');
-      return;
-  }
-  console.log('connecting success');
-});
+// In development, init database (drop existing tables and re-sync database)
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync Db');
+//   initial();
+// });
+
+// For production
+db.sequelize.sync();
+
+// insert table
+function initial() {
+  Role.create({
+    id: 1,
+    name: "use"
+  });
+ 
+  Role.create({
+    id: 2,
+    name: "moderator"
+  });
+ 
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+}
 
 
 var app = express()
@@ -57,7 +66,7 @@ app.use(
   })
 );
 
-app.get("/123", (req, res) => {
+app.get("/home", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 

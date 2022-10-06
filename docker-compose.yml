@@ -26,6 +26,7 @@ services:
     command: "nodemon app.js"
     depends_on: 
       - "mysqldb"
+      - "vue-ui"
     volumes:
        - ./server:/usr/src/app
        - /usr/src/app/node_modules
