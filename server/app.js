@@ -53,10 +53,10 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')));
 
 // db state
-app.use(function(req, res, next) {
-  req.con = connection;
-  next();
-});
+// app.use(function(req, res, next) {
+//   req.con = connection;
+//   next();
+// });
 
 app.use(
   cookieSession({
@@ -72,6 +72,9 @@ app.get("/home", (req, res) => {
 
 app.use('/api', indexRouter)
 app.use('/api/users', usersRouter)
+// routes
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
 var history = require('connect-history-api-fallback')
 app.use(express.static(path.join(__dirname, '../dist')))
 app.use(history())
