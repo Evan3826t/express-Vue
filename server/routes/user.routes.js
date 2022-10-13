@@ -2,6 +2,7 @@ const { authJwt } = require("../app/middleware");
 const controller = require("../app/controllers/user.controller");
 
 module.exports = function(app) {
+  // 每則請求都會先過這裡
   app.use(function(req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
@@ -12,6 +13,7 @@ module.exports = function(app) {
 
   app.get("/api/test/all", controller.allAccess);
 
+  // params app.get( url, middleware(可以用多個), controller)
   app.get(
     "/api/test/user",
     [authJwt.verifyToken],
