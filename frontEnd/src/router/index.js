@@ -7,16 +7,16 @@ import BootstrapVue from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }, {
-      path: '/about',
-      name: 'about',
-      component: about
-    }
-  ]
-})
+const routes = [
+  {
+    path: '/',
+    name: 'HelloWorld',
+    component: HelloWorld
+  }, {
+    path: '/about',
+    name: 'about',
+    component: about
+  }
+]
+const router = new Router({routes})
+export default router

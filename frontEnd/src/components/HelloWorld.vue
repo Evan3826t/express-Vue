@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <button type="button" name="button" v-on:click="getmsg">get</button>
+    <button type="button" name="button" v-on:click="getprivete">pravate get</button>
     <button type="button" name="button" v-on:click="postmsg">post</button>
   </div>
 </template>
@@ -20,8 +21,17 @@ export default {
         console.log('res=', res)
       })
     },
+    getprivete () {
+      this.$axios.get('/api/test/user')
+        .then(function (res) {
+          console.log('res=', res.response)
+        })
+        .catch(function (error) {
+          console.log('ERROR ! ', error)
+        })
+    },
     postmsg () {
-      this.$axios.post('/api/favorite', {name: 'money'}).then(res => {
+      this.$axios.post('/api/favorite', { name: 'money' }).then(res => {
         console.log('post res = ', res)
       })
     }
