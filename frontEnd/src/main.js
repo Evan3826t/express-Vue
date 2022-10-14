@@ -4,6 +4,7 @@ import 'mutationobserver-shim'
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import './plugins/bootstrap-vue'
+import '@/assets/css/main.css'
 import App from './App'
 import router from './router'
 import axios from 'axios'

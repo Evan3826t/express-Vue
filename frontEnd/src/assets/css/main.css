@@ -1,0 +1,9 @@
+body {
+    background-color: black;
+}
+.login-main{
+    margin-top: 50px;
+    width: 50%;
+    background-color: #fcfcfc;
+    border: 2px solid ;
+}
