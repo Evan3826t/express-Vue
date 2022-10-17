@@ -25,7 +25,7 @@ db.sequelize.sync();
 function initial() {
   Role.create({
     id: 1,
-    name: "use"
+    name: "user"
   });
  
   Role.create({

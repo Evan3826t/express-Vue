@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import about from '@/components/About'
 import login from '@/components/Login'
+import register from '@/components/Register'
 import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue)
@@ -10,7 +11,7 @@ Vue.use(Router)
 
 const routes = [
   {
-    path: '/',
+    path: '/index',
     name: 'HelloWorld',
     component: HelloWorld
   }, {
@@ -21,13 +22,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: login
+  }, {
+    path: '/register',
+    name: 'register',
+    component: register
   }
 ]
-const router = new Router({routes})
+const router = new Router({mode: 'history', routes})
 
 // 登入驗證
 router.beforeEach((to, from, next) => {
-  console.log(to.path)
   if (to.path === '/login' || to.path === '/register') {
     next()
   } else {
