@@ -11,14 +11,8 @@
           <b-form-input id="input-2" type="password" v-model="form.password" placeholder="Enter password" required></b-form-input>
         </b-form-group>
 
-        <!-- <b-form-group id="input-group-1" class="text-left" label="Email address:" label-for="input-1"
-          description="We'll never share your email with anyone else.">
-          <b-form-input id="input-1" v-model="form.email" type="email" placeholder="Enter email" required>
-          </b-form-input>
-        </b-form-group> -->
-
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button type="submit" variant="primary">登入</b-button>
+        <b-button type="reset" variant="danger">重置</b-button>
       </b-form>
     </div>
     <button type="button" name="button" v-on:click="getmsg">get</button>
@@ -43,7 +37,7 @@ export default {
       this.$axios.post('/api/auth/signin', this.form)
         .then(function (res) {
           localStorage.setItem('Authorization', res)
-          console.log('res=', res.response)
+          this.$router.push({path: '/home'})
         })
         .catch(function (error) {
           console.log('ERROR ! ', error)

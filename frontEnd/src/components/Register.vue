@@ -17,8 +17,8 @@
           </b-form-input>
         </b-form-group>
 
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button type="submit" variant="primary">登入</b-button>
+        <b-button type="reset" variant="danger">重置</b-button>
       </b-form>
     </div>
   </div>
@@ -40,11 +40,10 @@ export default {
   methods: {
     onSubmit (event) {
       event.preventDefault()
-      alert(JSON.stringify(this.form))
       this.$axios.post('/api/auth/signup', this.form)
         .then(function (res) {
           localStorage.setItem('Authorization', res)
-          console.log('res=', res.response)
+          this.$router.push({path: '/home'})
         })
         .catch(function (error) {
           console.log('ERROR ! ', error)
