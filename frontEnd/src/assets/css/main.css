@@ -1,9 +1,32 @@
 body {
     background-color: black;
 }
-.login-main{
-    margin-top: 50px;
-    width: 50%;
-    background-color: #fcfcfc;
-    border: 2px solid ;
+
+.login-main {
+    border: 2px solid;
+    background-color: #2b2b2b;
+    width: 25%;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 110px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, .1);
+    transition: 0.5s;
 }
+.login-main h1 {
+    text-align: center;
+    color: #232c3d;
+    transition: 0.5s;
+}
+@media only screen and (max-width: 768px) {
+    .login-main {
+      width: 75%;
+    }
+  }
+  
+  @media only screen and (max-width: 1366px) {
+    .login-main {
+      width: 40%;
+    }
+  }

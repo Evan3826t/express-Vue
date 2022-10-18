@@ -1,19 +1,18 @@
 <template>
-  <div class="container row justify-content-center">
     <div class="login-main row justify-content-center">
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-        <b-form-group id="input-group-1" class="text-left" label="user name:" label-for="input-1">
+        <h1 class="text-light">Login</h1>
+        <b-form-group id="input-group-1" class="text-left" label-for="input-1">
           <b-form-input id="input-1" v-model="form.userName" type="text" placeholder="Enter userName" required>
           </b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-2" class="text-left" label="Password:" label-for="input-2">
+        <b-form-group id="input-group-2" class="text-left" label-for="input-2">
           <b-form-input id="input-2" type="password" v-model="form.password" placeholder="Enter password" required></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">登入</b-button>
         <b-button type="reset" variant="danger">重置</b-button>
       </b-form>
     </div>
-  </div>
 </template>
 
 <script>
