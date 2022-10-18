@@ -60,11 +60,6 @@ export default {
       this.$nextTick(() => {
         this.show = true
       })
-    },
-    getmsg () {
-      this.$axios.get('/api/test/user').then(function (res) {
-        console.log('res=', res)
-      })
     }
   }
 }

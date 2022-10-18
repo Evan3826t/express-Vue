@@ -6,14 +6,15 @@ exports.allAccess = (req, res) => {
   };
   
   exports.userBoard = async (req, res) => {
-    console.log(req.userId);
-    const user = await User.findAll({
+    const user = await User.findOne({
+                  attributes: [
+                    'id', 'userName', 'email', 'password', 'createdAt'
+                  ],
                   where: {
                     id: req.userId
                   }
                 });
-    console.log(user[0].userName);
-    res.status(200).send(req.user);
+    res.status(200).send(user);
   };
   
   exports.adminBoard = (req, res) => {

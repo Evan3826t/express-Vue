@@ -14,8 +14,8 @@ module.exports = function(app) {
   app.get("/api/test/all", controller.allAccess);
 
   // params app.get( url, middleware(可以用多個), controller)
-  app.get(
-    "/api/test/user",
+  app.post(
+    "/api/user",
     [authJwt.verifyToken],
     controller.userBoard
   );

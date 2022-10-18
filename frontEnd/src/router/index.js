@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import about from '@/components/About'
 import login from '@/components/Login'
 import register from '@/components/Register'
+import profiles from '@/components/user/Profiles'
 import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue)
@@ -26,7 +27,13 @@ const routes = [
     path: '/register',
     name: 'register',
     component: register
+  }, {
+  // profile page
+    path: '/profiles',
+    name: 'profiles',
+    component: profiles
   }
+
 ]
 const router = new Router({mode: 'history', routes})
 

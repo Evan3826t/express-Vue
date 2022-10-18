@@ -6,16 +6,13 @@
           <b-form-input id="input-1" v-model="form.userName" type="text" placeholder="Enter userName" required>
           </b-form-input>
         </b-form-group>
-
         <b-form-group id="input-group-2" class="text-left" label="Password:" label-for="input-2">
           <b-form-input id="input-2" type="password" v-model="form.password" placeholder="Enter password" required></b-form-input>
         </b-form-group>
-
         <b-button type="submit" variant="primary">登入</b-button>
         <b-button type="reset" variant="danger">重置</b-button>
       </b-form>
     </div>
-    <button type="button" name="button" v-on:click="getmsg">get</button>
   </div>
 </template>
 
@@ -31,16 +28,19 @@ export default {
     }
   },
   methods: {
+    modal (title, contnet) {
+      this.$parent.modalToggle(title, contnet)
+    },
     onSubmit (event) {
       event.preventDefault()
-      alert(JSON.stringify(this.form))
+      let self = this
       this.$axios.post('/api/auth/signin', this.form)
         .then(function (res) {
           localStorage.setItem('Authorization', res)
-          this.$router.push({path: '/home'})
+          self.$router.push({path: '/home'})
         })
         .catch(function (error) {
-          console.log('ERROR ! ', error)
+          self.modal('登入失敗', error.response.data.message)
         })
     },
     onReset (event) {
@@ -51,11 +51,6 @@ export default {
       this.show = false
       this.$nextTick(() => {
         this.show = true
-      })
-    },
-    getmsg () {
-      this.$axios.get('/api/test/user').then(function (res) {
-        console.log('res=', res)
       })
     }
   }
