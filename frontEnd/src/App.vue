@@ -23,12 +23,12 @@
               <template #button-content>
                 <em>User</em>
               </template>
-              <b-dropdown-item href="/profiles">Profile</b-dropdown-item>
               <template v-if="!token">
                 <b-dropdown-item href="/login">Sign In</b-dropdown-item>
                 <b-dropdown-item href="/register">Register</b-dropdown-item>
               </template>
               <template v-else>
+                <b-dropdown-item href="/profiles">Profile</b-dropdown-item>
                 <b-dropdown-item href="#" v-on:click="SignOut">Sign Out</b-dropdown-item>
               </template>
             </b-nav-item-dropdown>

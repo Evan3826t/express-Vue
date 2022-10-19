@@ -13,7 +13,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
 
         if (user) {
             return res.status(400).send({
-                message: "Failed! Username is already in use!"
+                message: "帳號已被使用"
             });
         }
 
@@ -26,7 +26,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
 
         if (user) {
             return res.status(400).send({
-                message: "Failed! Email is already in use!"
+                message: "信箱已被使用"
             });
         }
 

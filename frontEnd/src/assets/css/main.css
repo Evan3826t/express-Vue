@@ -1,7 +1,9 @@
 body {
     background-color: black;
 }
-
+.navbar {
+    margin-top: -20px
+}
 .login-main {
     border: 2px solid;
     background-color: #2b2b2b;
