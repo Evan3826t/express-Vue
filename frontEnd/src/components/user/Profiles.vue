@@ -1,11 +1,16 @@
 <template>
-  <div class="container row justify-content-center text-light">
-
-    {{userName}}
-    {{password}}
-    {{email}}
-    {{createdAt}}
+  <b-container class="bv-example-row mt-3 profile-main">
+  <div v-if="!show" class="text-center">
+    <b-spinner variant="info" type="grow" label="Spinning"></b-spinner>
   </div>
+  <b-row v-else>
+    <b-col cols="6" class="profile-child p-3" md="4">
+      <b-img v-if="mainImg" :src="mainImg" rounded="circle" alt="Not rounded image"></b-img>
+      <b-img v-else src="" rounded="circle" alt="Not rounded image"></b-img>
+    </b-col>
+    <b-col cols="12" class="profile-child" md="8">cols="12" md="8"</b-col>
+  </b-row>
+</b-container>
 </template>
 
 <script>
@@ -16,7 +21,8 @@ export default {
       password: '',
       email: '',
       createdAt: '',
-      show: true
+      mainImg: 'https://picsum.photos/125/125/?image=58',
+      show: false
     }
   },
   created: function () {
