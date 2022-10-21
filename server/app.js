@@ -7,6 +7,7 @@ const cookieSession = require("cookie-session");
 
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
+var fileRouter = require('./routes/file')
 
 // DB
 const db = require("./app/models");
@@ -41,6 +42,9 @@ function initial() {
 
 
 var app = express()
+// fixing "413 Request Entity Too Large" errors
+app.use(express.json({limit: "10mb", extended: true}))
+app.use(express.urlencoded({limit: "10mb", extended: true, parameterLimit: 50000}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -72,6 +76,7 @@ app.get("/home", (req, res) => {
 
 app.use('/api', indexRouter)
 app.use('/api/users', usersRouter)
+app.use('/api/file', fileRouter)
 // routes
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);

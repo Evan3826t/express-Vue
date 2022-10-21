@@ -5,6 +5,7 @@ import about from '@/components/About'
 import login from '@/components/Login'
 import register from '@/components/Register'
 import profiles from '@/components/user/Profiles'
+import file from '@/components/File'
 import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(BootstrapVue)
@@ -32,6 +33,11 @@ const routes = [
     path: '/profiles',
     name: 'profiles',
     component: profiles
+  }, {
+  // file test
+    path: '/file',
+    name: 'file',
+    component: file
   }
 
 ]
