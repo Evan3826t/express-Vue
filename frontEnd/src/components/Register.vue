@@ -48,7 +48,7 @@ export default {
         this.$axios.post('/api/auth/signup', this.form)
           .then(function (res) {
             localStorage.setItem('Authorization', res)
-            this.$router.push({path: '/home'})
+            self.$router.push({path: '/home'})
           })
           .catch(function (error) {
             self.modal('註冊失敗', error.response.data.message)

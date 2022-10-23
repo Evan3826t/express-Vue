@@ -33,6 +33,7 @@ export default {
         self.password = res.data.password
         self.email = res.data.email
         self.createdAt = res.data.createdAt
+        self.show = true
       })
       .catch(function () {
         localStorage.removeItem('Authorization')
