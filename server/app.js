@@ -12,6 +12,8 @@ var fileRouter = require('./routes/file')
 // DB
 const db = require("./app/models");
 const Role = db.role;
+const User = db.user;
+const bcrypt = require("bcryptjs");
 
 // In development, init database (drop existing tables and re-sync database)
 // db.sequelize.sync({force: true}).then(() => {

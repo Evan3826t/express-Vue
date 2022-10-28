@@ -40,11 +40,9 @@ db.user.belongsToMany(db.role, {
   foreignKey: "userId",
   otherKey: "roleId"
 });
-db.file.belongsToMany(db.role, {
-  through: "user_files",
-  foreignKey: "fileId",
-  otherKey: "userId",
-});
+
+db.user.hasMany(db.file);
+
 
 db.ROLES = ["user", "admin", "moderator"];
 

@@ -27,6 +27,7 @@ export default {
       if (this.file) {
         let formData = new FormData()
         formData.append('file', this.file)
+        formData.append('type', 'profile')
         this.$axios.post('/api/file/upload', formData)
           .then(function (res) {
             console.log(res)
