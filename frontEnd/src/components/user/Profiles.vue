@@ -35,9 +35,10 @@ export default {
         self.createdAt = res.data.createdAt
         self.show = true
       })
-      .catch(function () {
-        localStorage.removeItem('Authorization')
-        self.$router.push({path: '/login'})
+      .catch(function (error) {
+        self.modal('找不到帳戶', error.response.data.message, '/login')
+        // localStorage.removeItem('Authorization')
+        // self.$router.push({path: '/login'})
       })
   },
   methods: {
@@ -45,6 +46,9 @@ export default {
       this.$axios.get('/api/test/user').then(function (res) {
         console.log('res=', res)
       })
+    },
+    modal (title, contnet, url = null) {
+      this.$parent.modalToggle(title, contnet, url)
     }
   }
 }

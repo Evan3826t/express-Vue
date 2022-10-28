@@ -55,7 +55,8 @@ export default {
         return localStorage.getItem('Authorization') || 0
       },
       modalTitle: 'title',
-      modalContent: 'content'
+      modalContent: 'content',
+      modalUrl: null
     }
   },
   methods: {
@@ -63,12 +64,15 @@ export default {
       localStorage.removeItem('Authorization')
       this.$router.push({ path: '/login' })
     },
-    modalToggle (title, content) {
+    modalToggle (title, content, url) {
       this.modalTitle = title
       this.modalContent = content
       this.$refs['my-modal'].show()
     },
     hideModal () {
+      if (this.modalUrl) {
+        this.$router.push({path: this.modalUrl})
+      }
       this.$refs['my-modal'].hide()
     }
   }
