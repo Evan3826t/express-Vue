@@ -36,9 +36,8 @@ export default {
         self.show = true
       })
       .catch(function (error) {
-        self.modal('找不到帳戶', error.response.data.message, '/login')
-        // localStorage.removeItem('Authorization')
-        // self.$router.push({path: '/login'})
+        self.modal('頁面錯誤', error.response.data.message, '/login')
+        localStorage.removeItem('Authorization')
       })
   },
   methods: {

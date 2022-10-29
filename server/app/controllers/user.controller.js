@@ -1,6 +1,7 @@
 const db = require("../models");
 const User = db.user;
 const userService = require("../service/user.service");
+const fileService = require("../service/file.service");
 
 exports.allAccess = (req, res) => {
     res.status(200).send("Public Content.");

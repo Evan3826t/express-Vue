@@ -64,9 +64,10 @@ export default {
       localStorage.removeItem('Authorization')
       this.$router.push({ path: '/login' })
     },
-    modalToggle (title, content, url) {
+    modalToggle (title, content, url = null) {
       this.modalTitle = title
       this.modalContent = content
+      this.modalUrl = url
       this.$refs['my-modal'].show()
     },
     hideModal () {
